@@ -115,8 +115,8 @@ namespace Mirza.Web.Services.User
                     .Include(a => a.AccessKeys)
                     .Include(t => t.Teams).ThenInclude(t => t.Team)
                     .SingleOrDefaultAsync(
-                            user => user.IsActive &&
-                            user.AccessKeys.Any(
+                            u => u.IsActive &&
+                            u.AccessKeys.Any(
                                     ak => ak.State == AccessKeyState.Active &&
                                     ak.Expiration >= DateTime.UtcNow &&
                                     accessKey == ak.Key)
